@@ -37,8 +37,8 @@ int http_connect(char *host) {
 
 	SlSockAddrIn_t addr;
 	int addr_size;
-	unsigned char uc_method = SL_SO_SEC_METHOD_TLSV1_2;
-	unsigned int ui_ip, ui_cipher = SL_SEC_MASK_TLS_DHE_RSA_WITH_AES_256_CBC_SHA;
+	unsigned char uc_method = SL_SO_SEC_METHOD_SSLv3_TLSV1_2;
+	unsigned int ui_ip, ui_cipher = SL_SEC_MASK_TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256;
 	long error_code;
 	int sock_id;
 
