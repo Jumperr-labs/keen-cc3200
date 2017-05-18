@@ -38,7 +38,7 @@ int http_connect(char *host) {
 	SlSockAddrIn_t addr;
 	int addr_size;
 	unsigned char uc_method = SL_SO_SEC_METHOD_SSLv3_TLSV1_2;
-	unsigned int ui_ip, ui_cipher = SL_SEC_MASK_TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256;
+	unsigned int ui_ip, ui_cipher = SL_SEC_MASK_TLS_DHE_RSA_WITH_AES_256_CBC_SHA;
 	long error_code;
 	int sock_id;
 
@@ -139,6 +139,7 @@ int http_request(int sock_id, const char *method, const char *url, const char *d
 	if (transfer_len < 0) {
 		return transfer_len;
 	} else {
+	    http_response(sock_id);
 		return HTTP_SUCCESS;
 	}
 }

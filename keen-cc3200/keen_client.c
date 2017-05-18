@@ -81,9 +81,4 @@ void build_resource(const char *event_collection) {
 	strncat((char *)resource_buffer, "/projects/", MAX_URI_SIZE - strlen((const char *)resource_buffer));
 	strncat((char *)resource_buffer, project_id, MAX_URI_SIZE - strlen((const char *)resource_buffer));
 	strncat((char *)resource_buffer, "/events", MAX_URI_SIZE - strlen((const char *)resource_buffer));
-
-	if (event_collection) {
-		strncat((char *)resource_buffer, "/", MAX_URI_SIZE - strlen((const char *)resource_buffer));
-		strncat((char *)resource_buffer, event_collection, MAX_URI_SIZE - strlen((const char *)resource_buffer));
-	}
 }

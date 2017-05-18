@@ -11,7 +11,7 @@
 #define MAX_URI_SIZE 128
 #define URI_SIZE MAX_URI_SIZE + 1
 
-#define	SERVER_NAME        "api.keen.io"
+#define	SERVER_NAME        "eventsapi2.jumper.io"
 #define	CONTENTTYPE_HEADER "application/json"
 #define	USERAGENT_HEADER   "CC3200/0.1a"
 
