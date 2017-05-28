@@ -9,10 +9,10 @@
 
 unsigned char request_buffer[BUFF_SIZE];
 
-int http_get(int sock_id, const char *url, http_headers *headers) {
+int http_get(int sock_id, const char *path, http_headers *headers) {
 	int transfer_len = 0;
 
-	transfer_len = http_request(sock_id, HTTP_METHOD_GET, url, 0, headers);
+	transfer_len = http_request(sock_id, HTTP_METHOD_GET, path, 0, headers);
 
 	if (transfer_len < 0) {
 		return transfer_len;
@@ -21,10 +21,10 @@ int http_get(int sock_id, const char *url, http_headers *headers) {
 	}
 }
 
-int http_post(int sock_id, const char *url, const char *data, http_headers *headers) {
+int http_post(int sock_id, const char *path, const char *data, http_headers *headers) {
 	int transfer_len = 0;
 
-	transfer_len = http_request(sock_id, HTTP_METHOD_POST, url, data, headers);
+	transfer_len = http_request(sock_id, HTTP_METHOD_POST, path, data, headers);
 
 	if (transfer_len < 0) {
 		return transfer_len;
@@ -86,14 +86,14 @@ int http_connect(char *host) {
 	return sock_id;
 }
 
-int http_request(int sock_id, const char *method, const char *url, const char *data, http_headers *headers) {
+int http_request(int sock_id, const char *method, const char *path, const char *data, http_headers *headers) {
 	int transfer_len = 0;
 
 	clear_request_buffer();
 
 	strncpy((char *)request_buffer, method, MAX_BUFF_SIZE);
 	strncat((char *)request_buffer, " ", MAX_BUFF_SIZE - strlen((const char *)request_buffer));
-	strncat((char *)request_buffer, url, MAX_BUFF_SIZE - strlen((const char *)request_buffer));
+	strncat((char *)request_buffer, path, MAX_BUFF_SIZE - strlen((const char *)request_buffer));
 	strncat((char *)request_buffer, " HTTP/1.1\r\n", MAX_BUFF_SIZE - strlen((const char *)request_buffer));
 
 	if (headers->host_header) {

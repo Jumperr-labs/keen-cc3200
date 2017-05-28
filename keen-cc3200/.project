@@ -27,7 +27,7 @@
 	<variableList>
 		<variable>
 			<name>CC3200_SDK_ROOT</name>
-			<value>$%7BPARENT-3-ORIGINAL_PROJECT_ROOT%7D</value>
+			<value>file:/home/gilburd/ti/CC3200SDK_1.1.0/cc3200-sdk</value>
 		</variable>
 		<variable>
 			<name>ORIGINAL_PROJECT_ROOT</name>

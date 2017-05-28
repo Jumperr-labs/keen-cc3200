@@ -75,8 +75,7 @@ int add_events(const char *events) {
 
 void build_resource(const char *event_collection) {
 	memset(resource_buffer, 0, sizeof(resource_buffer));
-
-	snprintf((char *)resource_buffer, MAX_URI_SIZE, "https://%s/", SERVER_NAME);
+    strncat((char *)resource_buffer, "/", MAX_URI_SIZE - strlen((const char *)resource_buffer));
 	strncat((char *)resource_buffer, api_version, MAX_URI_SIZE - strlen((const char *)resource_buffer));
 	strncat((char *)resource_buffer, "/projects/", MAX_URI_SIZE - strlen((const char *)resource_buffer));
 	strncat((char *)resource_buffer, project_id, MAX_URI_SIZE - strlen((const char *)resource_buffer));
