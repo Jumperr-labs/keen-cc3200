@@ -59,6 +59,7 @@ int add_events(const char *events) {
 	sock_id = http_connect(SERVER_NAME);
 
 	if (sock_id < 0) {
+        sl_Close(sock_id);
 		return sock_id;
 	}
 
@@ -67,9 +68,11 @@ int add_events(const char *events) {
 	transfer_len = http_post(sock_id, resource_buffer, events, &headers);
 
 	if (transfer_len < 0) {
+	    sl_Close(sock_id);
 		return transfer_len;
 	}
 
+    sl_Close(sock_id);
 	return HTTP_SUCCESS;
 }
 
